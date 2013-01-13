@@ -2,5 +2,5 @@
 
 Download the latest pack at [http://d.pr/f/h5dG](http://d.pr/f/h5dG) and double click to install. 
 
-Originally [Google Auto Complete](jdfwarrior.tumblr.com) by [@jdfwarrior](https://twitter.com/jdfwarrior)
+Originally [Google Auto Complete](http://jdfwarrior.tumblr.com) by [@jdfwarrior](https://twitter.com/jdfwarrior)
 
