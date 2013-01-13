@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>tinycode.taobaosugg</string>
+	<key>connections</key>
+	<dict>
+		<key>5FCE7CBD-DCF9-4BD7-AEC5-BCE18A6F90BD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>24C5D391-5F85-4878-9023-7C4B7CD5C401</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Adam Lau</string>
+	<key>description</key>
+	<string></string>
+	<key>name</key>
+	<string>Taobao Search Auto Complete</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>t</string>
+				<key>script</key>
+				<string>require_once('extension_utils.php');
+$utils = new ExtensionUtils();
+
+$results = array();
+$text = urlencode("{query}");
+$suggs = json_decode(file_get_contents("http://suggest.taobao.com/sug?code=utf-8&amp;q=$text"));
+
+
+foreach( $suggs-&gt;{'result'} as $sugg ):
+	$item = array(
+		'uid' =&gt; 'suggest {query}',
+		'arg' =&gt; $sugg[0],
+		'title' =&gt; ucwords($sugg[0]),
+		'subtitle' =&gt; 'Search Taobao for '. $sugg[0],
+		'icon' =&gt; 'icon.png',
+		'valid' =&gt; 'yes'
+	);
+	array_push( $results, $item );
+endforeach;
+
+if ( count( $results ) &gt; 0 ):
+	echo $utils-&gt;arrayToXml( $results );
+endif;</string>
+				<key>subtext</key>
+				<string>Search Taobao with Suggestions</string>
+				<key>title</key>
+				<string>Search Taobao</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5FCE7CBD-DCF9-4BD7-AEC5-BCE18A6F90BD</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>http://s.taobao.com/search?ie=utf-8&amp;q={query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>24C5D391-5F85-4878-9023-7C4B7CD5C401</string>
+		</dict>
+	</array>
+	<key>uidata</key>
+	<dict>
+		<key>24C5D391-5F85-4878-9023-7C4B7CD5C401</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>5FCE7CBD-DCF9-4BD7-AEC5-BCE18A6F90BD</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>tinycode.me</string>
+</dict>
+</plist>
