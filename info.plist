@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>tinycode.taobaosugg</string>
+	<string>me.tinycode.taobaosugg</string>
 	<key>connections</key>
 	<dict>
 		<key>5FCE7CBD-DCF9-4BD7-AEC5-BCE18A6F90BD</key>
@@ -22,6 +22,8 @@
 	<string>Adam Lau</string>
 	<key>description</key>
 	<string></string>
+	<key>disabled</key>
+	<false/>
 	<key>name</key>
 	<string>Taobao Search Auto Complete</string>
 	<key>objects</key>
@@ -35,6 +37,8 @@
 				<integer>63</integer>
 				<key>keyword</key>
 				<string>t</string>
+				<key>runningsubtext</key>
+				<string>Fetching...</string>
 				<key>script</key>
 				<string>require_once('extension_utils.php');
 $utils = new ExtensionUtils();
